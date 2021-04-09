@@ -1,62 +1,94 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Setup on your machine
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Prerequisites 
+This project requires [Vagrant](https://www.vagrantup.com/) to be downloaded on your machine
 
-## About Laravel
+### Steps
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+1. Create a local directory on your machine 
+2. Run the following code in your command line to navigate into that directory:   
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```shell 
+$ cd ~/your-directory-name-here
+```
+3. Copy the SSH key from this GitHub repository `git@github.com:Gilson96/user-manager.git`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+4. Run the following code in your command line to clone the repo to your machine:  
 
-## Learning Laravel
+```shell 
+git clone git@github.com:Gilson96/user-manager.git <app-name>
+```
+5. Navigate to your new app directory (the app name you just picked):
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```shell 
+$ cd app-name
+```
+6. Install the dependencies in the node_modules folder:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```shell 
+npm i
+```
+7. Install the dependencies in the composer file:
 
-## Laravel Sponsors
+```shell 
+composer i
+```
+8. Copy the relevant Homestead files into the
+project directory:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```shell 
+vendor/bin/homestead make
+```
 
-### Premium Partners
+9. Change the second line of Homestead.yaml so it just uses 512mb: 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+```shell 
+memory: 512
+```
 
-## Contributing
+10. Create a .env file:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```shell 
+cp .env.example .env
+```
 
-## Code of Conduct
+11. Edit the .env file you just created to use the default Homestead database setup:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```shell 
+DB_DATABASE=homestead
+DB_USERNAME=root
+DB_PASSWORD=secret
+```
 
-## Security Vulnerabilities
+12. Generate an application key:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```shell 
+php artisan key:generate
+```
 
-## License
+13. Get Vagrant up and running:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```shell 
+vagrant up
+```
+14. Once Vagrant has finished loading, go to:
+
+    1.  On Mac: http://homestead.test
+    2.  On Windows: http://localhost:8000
+
+15. SSH into the Vagrant machine:
+
+```shell 
+vagrant ssh
+```
+
+16. Navigate to the code directory:
+
+```shell 
+cd code
+```
+17. Run migrations:
+
+```shell 
+artisan migrate
+```
