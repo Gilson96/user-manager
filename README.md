@@ -11,12 +11,12 @@ This project requires [Vagrant](https://www.vagrantup.com/) to be downloaded on 
 ```shell 
 $ cd ~/your-directory-name-here
 ```
-3. Copy the SSH key from this GitHub repository `git@github.com:deanssmart/the-vet-practice.git`
+3. Copy the SSH key from this GitHub repository `git@github.com:Gilson96/user-manager.git`
 
-4. Run the following code in your command line to clone the repo to your machine (you can change the app-name to what you desire):  
+4. Run the following code in your command line to clone the repo to your machine:  
 
 ```shell 
-git clone git@github.com:deanssmart/the-vet-practice.git <app-name>
+git clone git@github.com:Gilson96/user-manager.git <app-name>
 ```
 5. Navigate to your new app directory (the app name you just picked):
 
@@ -92,16 +92,3 @@ cd code
 ```shell 
 artisan migrate
 ```
-
-### Creating an authorised user
-
-Some of the app's features are blocked to unauthorised users to you will need to create a user in order to access them. The easiest way to do this is using `artisan tinker`:
-
-````
-$user=newUser();
-$user->name="Your Name"
-$user->role="Your Role"
-$user->email="your@email.com"
-$user->password=Hash::make("password")
-$user->save()
-````
