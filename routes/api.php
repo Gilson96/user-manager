@@ -17,7 +17,7 @@ Route::group([
 ], function () {
 
     // GET /clients: show all clients
-    Route::get("", [Clients::class, "index"])->middleware('auth:api');
+    Route::get("", [Clients::class, "index"]);//->middleware('auth:api');
 
     // POST /Clients: create a new client
     Route::post("", [Clients::class, "store"]);
